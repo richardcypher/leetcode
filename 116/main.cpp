@@ -34,6 +34,21 @@ void connect(TreeLinkNode *root) {
     }
 }
 
+void connect2(TreeLinkNode* left, TreeLinkNode* right) {
+    left->next = right;
+    if(left->left) {
+        connect2(left->left, left->right);
+        connect2(right->left, right->right);
+        connect2(left->right, right->left);
+    }
+}
+
+void connect1(TreeLinkNode *root) {
+    if(!root || !root->left)
+        return ;
+    connect2(root->left, root->right);
+}
+
 int main() {
     return 0;
 }
