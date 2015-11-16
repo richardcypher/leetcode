@@ -17,16 +17,13 @@ int countDigitOne(int n) {
         lastnum = n % 10;
         n /= 10;
         if(lastnum == 0) {
-            if(num10 != 1)
-                numof1 = n * num10;
-            else
-                numof1 = n;
+            numof1 = n * num10;
+        }
+        else if(lastnum == 1){
+            numof1 = origin % num10 + 1 + n * num10;
         }
         else {
-            if(n != 0)
-                numof1 = (n + 1) * (origin - n * num10 * 10 + 1);
-            else
-                numof1 = num10;
+            numof1 = (n + 1) * num10;
         }
         num10 *= 10;
         total1 += numof1;
